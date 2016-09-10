@@ -1,0 +1,357 @@
+{
+  "luis_schema_version": "1.3.0",
+  "name": "Loan Application",
+  "desc": "Bot that caters to consumers applying for Loans",
+  "culture": "en-us",
+  "intents": [
+    {
+      "name": "GetPendingPolicyRequests"
+    },
+    {
+      "name": "GetPolicyDocument"
+    },
+    {
+      "name": "GetPolicyRequestDetails"
+    },
+    {
+      "name": "GetPolicyRequests"
+    },
+    {
+      "name": "GetPolicyRequestStatusByType"
+    },
+    {
+      "name": "None"
+    },
+    {
+      "name": "ScheduleSiteVisit"
+    }
+  ],
+  "entities": [
+    {
+      "name": "Insurance Policy",
+      "children": [
+        "General",
+        "Vehicle",
+        "Home",
+        "Life"
+      ]
+    },
+    {
+      "name": "keyword"
+    },
+    {
+      "name": "PolicyNumber"
+    },
+    {
+      "name": "PolicyRequestId"
+    }
+  ],
+  "composites": [],
+  "bing_entities": [
+    "datetime"
+  ],
+  "actions": [],
+  "model_features": [],
+  "regex_features": [],
+  "utterances": [
+    {
+      "text": "get my insurance policy request details",
+      "intent": "GetPolicyRequests",
+      "entities": []
+    },
+    {
+      "text": "is my vehicle policy approved?",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "get all my policy request",
+      "intent": "GetPolicyRequests",
+      "entities": []
+    },
+    {
+      "text": "i have a policy request pending",
+      "intent": "GetPendingPolicyRequests",
+      "entities": []
+    },
+    {
+      "text": "what is the status of my policy request application?",
+      "intent": "GetPendingPolicyRequests",
+      "entities": []
+    },
+    {
+      "text": "is my policy request approved?",
+      "intent": "GetPendingPolicyRequests",
+      "entities": []
+    },
+    {
+      "text": "get me the details of policy request number vehpolicy001",
+      "intent": "GetPolicyRequestDetails",
+      "entities": [
+        {
+          "entity": "PolicyRequestId",
+          "startPos": 8,
+          "endPos": 8
+        }
+      ]
+    },
+    {
+      "text": "get me the details of policy request number dfsf2345345",
+      "intent": "GetPolicyRequestDetails",
+      "entities": [
+        {
+          "entity": "PolicyRequestId",
+          "startPos": 8,
+          "endPos": 8
+        }
+      ]
+    },
+    {
+      "text": "get me the details of policy request number gf892312",
+      "intent": "GetPolicyRequestDetails",
+      "entities": [
+        {
+          "entity": "PolicyRequestId",
+          "startPos": 8,
+          "endPos": 8
+        }
+      ]
+    },
+    {
+      "text": "get me the details of policy request number veh329000",
+      "intent": "GetPolicyRequestDetails",
+      "entities": [
+        {
+          "entity": "PolicyRequestId",
+          "startPos": 8,
+          "endPos": 8
+        }
+      ]
+    },
+    {
+      "text": "i have a policy request application",
+      "intent": "GetPendingPolicyRequests",
+      "entities": []
+    },
+    {
+      "text": "get all my policy requests",
+      "intent": "GetPolicyRequests",
+      "entities": []
+    },
+    {
+      "text": "get all pending policy requests",
+      "intent": "GetPendingPolicyRequests",
+      "entities": []
+    },
+    {
+      "text": "get me the status of my life insurance policy request",
+      "intent": "GetPolicyRequestStatusByType",
+      "entities": [
+        {
+          "entity": "Insurance Policy::Life",
+          "startPos": 6,
+          "endPos": 6
+        },
+        {
+          "entity": "Insurance Policy",
+          "startPos": 7,
+          "endPos": 7
+        }
+      ]
+    },
+    {
+      "text": "get the status of my vehicle insurance policy request",
+      "intent": "GetPolicyRequestStatusByType",
+      "entities": [
+        {
+          "entity": "Insurance Policy::Vehicle",
+          "startPos": 5,
+          "endPos": 5
+        },
+        {
+          "entity": "Insurance Policy",
+          "startPos": 6,
+          "endPos": 6
+        }
+      ]
+    },
+    {
+      "text": "get the status of my home insurance policy request",
+      "intent": "GetPolicyRequestStatusByType",
+      "entities": [
+        {
+          "entity": "Insurance Policy::Home",
+          "startPos": 5,
+          "endPos": 5
+        },
+        {
+          "entity": "Insurance Policy",
+          "startPos": 6,
+          "endPos": 6
+        }
+      ]
+    },
+    {
+      "text": "get the status of my general insurance policy request",
+      "intent": "GetPolicyRequestStatusByType",
+      "entities": [
+        {
+          "entity": "Insurance Policy::General",
+          "startPos": 5,
+          "endPos": 5
+        },
+        {
+          "entity": "Insurance Policy",
+          "startPos": 6,
+          "endPos": 6
+        }
+      ]
+    },
+    {
+      "text": "get the status of my life insurance policy request",
+      "intent": "GetPolicyRequestStatusByType",
+      "entities": [
+        {
+          "entity": "Insurance Policy::Life",
+          "startPos": 5,
+          "endPos": 5
+        },
+        {
+          "entity": "Insurance Policy",
+          "startPos": 6,
+          "endPos": 6
+        }
+      ]
+    },
+    {
+      "text": "get me policy document with number a891233 issued last week",
+      "intent": "GetPolicyDocument",
+      "entities": [
+        {
+          "entity": "PolicyNumber",
+          "startPos": 6,
+          "endPos": 6
+        }
+      ]
+    },
+    {
+      "text": "get me policy document number zx89343 issued last week",
+      "intent": "GetPolicyDocument",
+      "entities": [
+        {
+          "entity": "PolicyNumber",
+          "startPos": 5,
+          "endPos": 5
+        }
+      ]
+    },
+    {
+      "text": "get my policy document number policy0101",
+      "intent": "GetPolicyDocument",
+      "entities": [
+        {
+          "entity": "PolicyNumber",
+          "startPos": 5,
+          "endPos": 5
+        }
+      ]
+    },
+    {
+      "text": "get me policy document for vehicle number ka798799",
+      "intent": "GetPolicyDocument",
+      "entities": [
+        {
+          "entity": "keyword",
+          "startPos": 7,
+          "endPos": 7
+        }
+      ]
+    },
+    {
+      "text": "get me all my policy requests",
+      "intent": "GetPolicyRequests",
+      "entities": []
+    },
+    {
+      "text": "i have a policy request",
+      "intent": "GetPendingPolicyRequests",
+      "entities": []
+    },
+    {
+      "text": "i have a policy request pending approval",
+      "intent": "GetPendingPolicyRequests",
+      "entities": []
+    },
+    {
+      "text": "is my policy request approved",
+      "intent": "GetPendingPolicyRequests",
+      "entities": []
+    },
+    {
+      "text": "get all my policy documents",
+      "intent": "GetPolicyDocument",
+      "entities": []
+    },
+    {
+      "text": "get all my policy document",
+      "intent": "GetPolicyDocument",
+      "entities": []
+    },
+    {
+      "text": "get al my policy requests",
+      "intent": "GetPolicyRequests",
+      "entities": []
+    },
+    {
+      "text": "get me all the policy requests",
+      "intent": "GetPolicyRequests",
+      "entities": []
+    },
+    {
+      "text": "get all policy requests",
+      "intent": "GetPolicyRequests",
+      "entities": []
+    },
+    {
+      "text": "schedule a site inspection visit tomorrow",
+      "intent": "ScheduleSiteVisit",
+      "entities": []
+    },
+    {
+      "text": "yes",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "hello",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "hi",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "show me the status of my policy requests",
+      "intent": "GetPolicyRequests",
+      "entities": []
+    },
+    {
+      "text": "show me the status of my life insurance policy request",
+      "intent": "GetPolicyRequestStatusByType",
+      "entities": [
+        {
+          "entity": "Insurance Policy::Life",
+          "startPos": 6,
+          "endPos": 6
+        },
+        {
+          "entity": "Insurance Policy",
+          "startPos": 7,
+          "endPos": 7
+        }
+      ]
+    }
+  ]
+}
