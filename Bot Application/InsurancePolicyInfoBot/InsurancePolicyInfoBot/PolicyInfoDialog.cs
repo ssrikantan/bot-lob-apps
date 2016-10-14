@@ -17,7 +17,7 @@ namespace InsurancePolicyInfoBot
     /// This class implements the Luis Dialog integration with the Bot Application. All user conversations are interpreted here and then a 
     /// subsequent call executed on Azure Search to surface the information
     /// </summary>
-    [LuisModel("34302853-8cc7-4230-82bb-c2a16d0033a7", "84f8545836a449d0bb09b2aaf68ab417")]
+    [LuisModel("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx", "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")]
     [Serializable]
     public class PolicyInfoDialog : LuisDialog<object>
     {
@@ -260,8 +260,9 @@ namespace InsurancePolicyInfoBot
             else
             {
                 string message = string.Empty;
-                context.PrivateConversationData.SetValue<string>("MicrosoftAccount", profileIdentityForm.MicrosoftAccount);
-                UserProfile profile = await LoadBotUserState(profileIdentityForm.MicrosoftAccount);
+                string scrubbedAccountName = ExtractEmailAddress(profileIdentityForm.MicrosoftAccount);
+                context.PrivateConversationData.SetValue<string>("MicrosoftAccount", scrubbedAccountName);
+                UserProfile profile = await LoadBotUserState(scrubbedAccountName);
                 if (profile == null)
                 {
                     message = $"Sorry, we could not locate your profile in our system. Please check and try again with the right Microsoft Account";
@@ -282,6 +283,31 @@ namespace InsurancePolicyInfoBot
             context.Wait(MessageReceived);
         }
 
+        /// <summary>
+        /// This is required to scrub the Account name received from some channels like Skype, where there are enclosing tags and a mailto: flag
+        /// In this method, the email address alone is extracted from the message.
+        /// The incoming format from Skype client is :<a href="mailto:someuser@hotmail.com">someuser@hotmail.com</a>
+        /// </summary>
+        /// <param name="msftaccountname"></param>
+        /// <returns></returns>
+        private string ExtractEmailAddress(string msftaccountname)
+        {
+            string returnvalue = string.Empty;
+
+            if (msftaccountname.Contains("mailto"))
+            {
+                try
+                {
+                    int posstarttag = msftaccountname.IndexOf(">");
+                    int posendtag = msftaccountname.LastIndexOf("<");
+                    returnvalue = msftaccountname.Substring(posstarttag + 1, (posendtag - posstarttag - 1));
+                }
+                catch (Exception) { }
+                return returnvalue;
+            }
+            else
+                return msftaccountname;
+        }
         /// <summary>
         /// An acknowledgement message that is sent to the Bot user for the Site inspection visit. It retrieves the Address and contact
         /// information from the conversation state
