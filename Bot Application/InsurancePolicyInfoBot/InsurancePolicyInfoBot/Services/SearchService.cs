@@ -155,7 +155,6 @@ namespace InsurancePolicyInfoBot.Services
 
             foreach (SearchResult<PolicyDocument> result in results)
             {
-                counter = 1;
                 searchResponse += counter + ". Link: [" + result.Document.filename + "](" + result.Document.fileurl + ") \n";
                 counter++;
             }
